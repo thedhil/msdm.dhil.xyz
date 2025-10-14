@@ -4,8 +4,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Layout } from "./components/Layout";
 import Index from "./pages/Index";
+import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Documents from "./pages/Documents";
 import Incidents from "./pages/Incidents";
@@ -26,24 +29,67 @@ const App = () => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Layout>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/documents" element={<Documents />} />
-              <Route path="/incidents" element={<Incidents />} />
-              <Route path="/tasks" element={<Tasks />} />
-              <Route path="/recruitment" element={<Recruitment />} />
-              <Route path="/evaluation" element={<Evaluation />} />
-              <Route path="*" element={<NotFound />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Layout><Index /></Layout>} />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Layout><Dashboard /></Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/documents"
+                element={
+                  <ProtectedRoute>
+                    <Layout><Documents /></Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/incidents"
+                element={
+                  <ProtectedRoute>
+                    <Layout><Incidents /></Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/tasks"
+                element={
+                  <ProtectedRoute>
+                    <Layout><Tasks /></Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/recruitment"
+                element={
+                  <ProtectedRoute>
+                    <Layout><Recruitment /></Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/evaluation"
+                element={
+                  <ProtectedRoute>
+                    <Layout><Evaluation /></Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<Layout><NotFound /></Layout>} />
             </Routes>
-          </Layout>
-        </BrowserRouter>
-      </TooltipProvider>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 };
