@@ -22,149 +22,149 @@ import PublicIncidentReport from "./pages/PublicReport";
 import IncidentManagement from "./pages/ManageInsiden";
 
 const App = () => {
-  // Create QueryClient instance inside component to ensure proper React initialization
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            staleTime: 60 * 1000,
-          },
-        },
-      })
-  );
+    // Create QueryClient instance inside component to ensure proper React initialization
+    const [queryClient] = useState(
+        () =>
+            new QueryClient({
+                defaultOptions: {
+                    queries: {
+                        staleTime: 60 * 1000,
+                    },
+                },
+            }),
+    );
 
-  return (
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/login" element={<Login />} />
-              <Route
-                path="/"
-                element={
-                  <Layout>
-                    <Index />
-                  </Layout>
-                }
-              />
-              <Route
-                path="/dashboard"
-                element={
-                  <ProtectedRoute>
-                    <Layout>
-                      <Dashboard />
-                    </Layout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/documents"
-                element={
-                  <ProtectedRoute>
-                    <Layout>
-                      <Documents />
-                    </Layout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/incidents"
-                element={
-                  <ProtectedRoute>
-                    <Layout>
-                      <Incidents />
-                    </Layout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/tasks"
-                element={
-                  <ProtectedRoute>
-                    <Layout>
-                      <Tasks />
-                    </Layout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/recruitment"
-                element={
-                  //   <ProtectedRoute>
-                  <Layout>
-                    <Recruitment />
-                  </Layout>
-                  //   </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/apply"
-                element={
-                  //   <ProtectedRoute>
-                  <Layout>
-                    <RecruitmentApply />
-                  </Layout>
-                  //   </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/lapor"
-                element={
-                  //   <ProtectedRoute>
-                  <Layout>
-                    <PublicIncidentReport />
-                  </Layout>
-                  //   </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/managelapor"
-                element={
-                  <ProtectedRoute>
-                    <Layout>
-                      <IncidentManagement />
-                    </Layout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/approval"
-                element={
-                  <ProtectedRoute>
-                    <Layout>
-                      <RecruitmentApproval />
-                    </Layout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/evaluation"
-                element={
-                  <ProtectedRoute>
-                    <Layout>
-                      <Evaluation />
-                    </Layout>
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="*"
-                element={
-                  <Layout>
-                    <NotFound />
-                  </Layout>
-                }
-              />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </AuthProvider>
-    </QueryClientProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <AuthProvider>
+                <TooltipProvider>
+                    <Toaster />
+                    <Sonner />
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/login" element={<Login />} />
+                            <Route
+                                path="/"
+                                element={
+                                    <Layout>
+                                        <Index />
+                                    </Layout>
+                                }
+                            />
+                            <Route
+                                path="/dashboard"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <Dashboard />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/documents"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <Documents />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/incidents"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <Incidents />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/tasks"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <Tasks />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/recruitment"
+                                element={
+                                    //   <ProtectedRoute>
+                                    <Layout>
+                                        <Recruitment />
+                                    </Layout>
+                                    //   </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/apply"
+                                element={
+                                    //   <ProtectedRoute>
+                                    <Layout>
+                                        <RecruitmentApply />
+                                    </Layout>
+                                    //   </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/lapor"
+                                element={
+                                    //   <ProtectedRoute>
+                                    <Layout>
+                                        <PublicIncidentReport />
+                                    </Layout>
+                                    //   </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/managelapor"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <IncidentManagement />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/approval"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <RecruitmentApproval />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/evaluation"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <Evaluation />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="*"
+                                element={
+                                    <Layout>
+                                        <NotFound />
+                                    </Layout>
+                                }
+                            />
+                        </Routes>
+                    </BrowserRouter>
+                </TooltipProvider>
+            </AuthProvider>
+        </QueryClientProvider>
+    );
 };
 
 export default App;
