@@ -16,16 +16,23 @@ import Tasks from "./pages/Tasks";
 import Recruitment from "./pages/Recruitment";
 import Evaluation from "./pages/Evaluation";
 import NotFound from "./pages/NotFound";
+import RecruitmentApproval from "./pages/RecruitmentApproval";
+import RecruitmentApply from "./pages/Apply";
+import PublicIncidentReport from "./pages/PublicReport";
+import IncidentManagement from "./pages/ManageInsiden";
 
 const App = () => {
   // Create QueryClient instance inside component to ensure proper React initialization
-  const [queryClient] = useState(() => new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 60 * 1000,
-      },
-    },
-  }));
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 60 * 1000,
+          },
+        },
+      })
+  );
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -36,12 +43,21 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/login" element={<Login />} />
-              <Route path="/" element={<Layout><Index /></Layout>} />
+              <Route
+                path="/"
+                element={
+                  <Layout>
+                    <Index />
+                  </Layout>
+                }
+              />
               <Route
                 path="/dashboard"
                 element={
                   <ProtectedRoute>
-                    <Layout><Dashboard /></Layout>
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -49,7 +65,9 @@ const App = () => {
                 path="/documents"
                 element={
                   <ProtectedRoute>
-                    <Layout><Documents /></Layout>
+                    <Layout>
+                      <Documents />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -57,7 +75,9 @@ const App = () => {
                 path="/incidents"
                 element={
                   <ProtectedRoute>
-                    <Layout><Incidents /></Layout>
+                    <Layout>
+                      <Incidents />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -65,15 +85,59 @@ const App = () => {
                 path="/tasks"
                 element={
                   <ProtectedRoute>
-                    <Layout><Tasks /></Layout>
+                    <Layout>
+                      <Tasks />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
               <Route
                 path="/recruitment"
                 element={
+                  //   <ProtectedRoute>
+                  <Layout>
+                    <Recruitment />
+                  </Layout>
+                  //   </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/apply"
+                element={
+                  //   <ProtectedRoute>
+                  <Layout>
+                    <RecruitmentApply />
+                  </Layout>
+                  //   </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/lapor"
+                element={
+                  //   <ProtectedRoute>
+                  <Layout>
+                    <PublicIncidentReport />
+                  </Layout>
+                  //   </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/managelapor"
+                element={
                   <ProtectedRoute>
-                    <Layout><Recruitment /></Layout>
+                    <Layout>
+                      <IncidentManagement />
+                    </Layout>
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/approval"
+                element={
+                  <ProtectedRoute>
+                    <Layout>
+                      <RecruitmentApproval />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -81,11 +145,20 @@ const App = () => {
                 path="/evaluation"
                 element={
                   <ProtectedRoute>
-                    <Layout><Evaluation /></Layout>
+                    <Layout>
+                      <Evaluation />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
-              <Route path="*" element={<Layout><NotFound /></Layout>} />
+              <Route
+                path="*"
+                element={
+                  <Layout>
+                    <NotFound />
+                  </Layout>
+                }
+              />
             </Routes>
           </BrowserRouter>
         </TooltipProvider>

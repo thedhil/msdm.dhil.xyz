@@ -1,16 +1,22 @@
 import { useState } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { 
-  FileText, 
-  Upload, 
+import {
+  FileText,
+  Upload,
   Search,
   Download,
   Eye,
   Calendar,
-  User
+  User,
 } from "lucide-react";
 
 const Documents = () => {
@@ -23,7 +29,7 @@ const Documents = () => {
       uploadedBy: "Coordination Team",
       date: "Dec 15, 2025",
       size: "2.4 MB",
-      category: "planning"
+      category: "planning",
     },
     {
       name: "Standard Operating Procedures",
@@ -31,7 +37,7 @@ const Documents = () => {
       uploadedBy: "Management Team",
       date: "Dec 14, 2025",
       size: "1.8 MB",
-      category: "policy"
+      category: "policy",
     },
     {
       name: "Emergency Response Plan",
@@ -39,7 +45,7 @@ const Documents = () => {
       uploadedBy: "Safety Committee",
       date: "Dec 13, 2025",
       size: "3.2 MB",
-      category: "emergency"
+      category: "emergency",
     },
     {
       name: "Venue Layout and Setup Guide",
@@ -47,7 +53,7 @@ const Documents = () => {
       uploadedBy: "Logistics Team",
       date: "Dec 12, 2025",
       size: "5.1 MB",
-      category: "logistics"
+      category: "logistics",
     },
     {
       name: "Committee Roles and Responsibilities",
@@ -55,7 +61,7 @@ const Documents = () => {
       uploadedBy: "HR Team",
       date: "Dec 10, 2025",
       size: "1.2 MB",
-      category: "hr"
+      category: "hr",
     },
     {
       name: "Budget Allocation Report",
@@ -63,21 +69,23 @@ const Documents = () => {
       uploadedBy: "Finance Team",
       date: "Dec 8, 2025",
       size: "892 KB",
-      category: "finance"
-    }
+      category: "finance",
+    },
   ];
 
   const categories = [
     { name: "Planning", count: 8, color: "bg-blue-100 text-blue-700" },
     { name: "Emergency", count: 3, color: "bg-red-100 text-red-700" },
     { name: "Logistics", count: 12, color: "bg-purple-100 text-purple-700" },
-    { name: "HR", count: 6, color: "bg-green-100 text-green-700" }
+    { name: "HR", count: 6, color: "bg-green-100 text-green-700" },
   ];
 
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-bold text-foreground mb-2">Document Center</h1>
+        <h1 className="text-3xl font-bold text-foreground mb-2">
+          Document Center
+        </h1>
         <p className="text-muted-foreground">
           Centralized cloud storage for all PKKMB documentation and resources
         </p>
@@ -91,16 +99,32 @@ const Documents = () => {
             Upload Documents
           </CardTitle>
           <CardDescription>
-            Share SOPs, schedules, emergency plans, and other important files with your team
+            Share SOPs, schedules, emergency plans, and other important files
+            with your team
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button className="gap-2">
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
+            {/* Hidden real input */}
+            <input
+              type="file"
+              id="dokumentes"
+              className="hidden"
+              accept=".pdf,.doc,.docx,.xls,.xlsx"
+            />
+
+            {/* Label triggers the hidden input */}
+            <label
+              htmlFor="dokumentes"
+              className="cursor-pointer flex flex-nowrap gap-2 items-center px-3 py-1.5 text-white bg-primary/90 rounded-md"
+            >
+              {/* <Button type="button" className="gap-2"> */}
               <Upload className="h-4 w-4" />
               Choose File
-            </Button>
-            <p className="text-sm text-muted-foreground self-center">
+              {/* </Button> */}
+            </label>
+
+            <p className="text-sm text-muted-foreground">
               Supported formats: PDF, DOC, DOCX, XLS, XLSX (Max 10MB)
             </p>
           </div>
@@ -110,12 +134,17 @@ const Documents = () => {
       {/* Categories */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {categories.map((category) => (
-          <Card key={category.name} className="hover:shadow-md transition-shadow cursor-pointer">
+          <Card
+            key={category.name}
+            className="hover:shadow-md transition-shadow cursor-pointer"
+          >
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Category</p>
-                  <p className="font-semibold text-foreground">{category.name}</p>
+                  <p className="font-semibold text-foreground">
+                    {category.name}
+                  </p>
                 </div>
                 <Badge className={category.color}>{category.count}</Badge>
               </div>
@@ -146,35 +175,57 @@ const Documents = () => {
             {documents.map((doc, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-4 rounded-lg border hover:bg-muted/50 transition-colors"
+                className="p-4 rounded-lg border hover:bg-muted/50 transition-colors"
               >
-                <div className="flex items-center gap-4 flex-1 min-w-0">
-                  <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <FileText className="h-5 w-5 text-primary" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-foreground truncate">{doc.name}</p>
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground mt-1">
-                      <span className="flex items-center gap-1">
-                        <User className="h-3 w-3" />
-                        {doc.uploadedBy}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Calendar className="h-3 w-3" />
-                        {doc.date}
-                      </span>
-                      <span>{doc.size}</span>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                  {/* Left section: file info */}
+                  <div className="flex items-start sm:items-center gap-4 flex-1 min-w-0">
+                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <FileText className="h-5 w-5 text-primary" />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground break-words sm:truncate">
+                        {doc.name}
+                      </p>
+
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground mt-1">
+                        <span className="flex items-center gap-1">
+                          <User className="h-3 w-3" />
+                          {doc.uploadedBy}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-3 w-3" />
+                          {doc.date}
+                        </span>
+                        <span>{doc.size}</span>
+                      </div>
                     </div>
                   </div>
-                  <Badge variant="secondary">{doc.type}</Badge>
-                </div>
-                <div className="flex items-center gap-2 ml-4">
-                  <Button size="sm" variant="ghost">
-                    <Eye className="h-4 w-4" />
-                  </Button>
-                  <Button size="sm" variant="ghost">
-                    <Download className="h-4 w-4" />
-                  </Button>
+
+                  {/* Right section: badge + buttons */}
+                  <div className="flex flex-wrap sm:flex-nowrap items-center justify-between sm:justify-end gap-2 sm:gap-3">
+                    <Badge variant="secondary" className="text-xs sm:text-sm">
+                      {doc.type}
+                    </Badge>
+
+                    <div className="flex items-center gap-1">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="flex-shrink-0"
+                      >
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="flex-shrink-0"
+                      >
+                        <Download className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
