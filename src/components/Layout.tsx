@@ -16,18 +16,18 @@ import { Button } from "./ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 
 const navigation = [
-    { name: "Home", href: "/", icon: LayoutDashboard },
-    { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Beranda", href: "/", icon: LayoutDashboard },
+    { name: "Dasbor", href: "/dashboard", icon: LayoutDashboard },
     { name: "Dokumen", href: "/documents", icon: FileText },
-    { name: "Insiden", href: "/managelapor", icon: AlertTriangle },
+    { name: "Laporan Insiden", href: "/managelapor", icon: AlertTriangle },
     { name: "Tugas", href: "/tasks", icon: CheckSquare },
     { name: "Rekrutmen", href: "/approval", icon: Users },
     { name: "Evaluasi", href: "/evaluation", icon: BarChart3 },
 ];
 
 const publicmenu = [
-    { name: "Home", href: "/", icon: LayoutDashboard },
-    { name: "Lapor Insiden", href: "/lapor", icon: Users },
+    { name: "Beranda", href: "/", icon: LayoutDashboard },
+    { name: "Laporkan Insiden", href: "/lapor", icon: Users },
     { name: "Rekrutmen", href: "/apply", icon: Users },
 ];
 
@@ -55,7 +55,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                         </div>
                         <div className="hidden shrink-0 md:block">
                             <h1 className="break-keep text-lg font-bold text-foreground">
-                                PKKMB Management
+                                Sistem Manajemen PKKMB
                             </h1>
                             <p className="text-xs text-muted-foreground">
                                 FISIPOL UNESA 2025
@@ -118,7 +118,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                                 onClick={handleLogout}
                             >
                                 <LogOut className="h-4 w-4" />
-                                Logout
+                                Keluar
                             </Button>
                         ) : (
                             <Link to="/login">
@@ -128,13 +128,13 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                                     className="gap-2"
                                 >
                                     <LogIn className="h-4 w-4" />
-                                    Login
+                                    Masuk
                                 </Button>
                             </Link>
                         )}
                     </nav>
 
-                    {/* Mobile Menu Button */}
+                    {/* Tombol Menu Mobile */}
                     <Button
                         variant="ghost"
                         size="icon"
@@ -149,7 +149,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     </Button>
                 </div>
 
-                {/* Mobile Navigation */}
+                {/* Navigasi Mobile */}
                 {mobileMenuOpen && (
                     <div className="border-t bg-card xl:hidden">
                         <nav className="container flex flex-col gap-2 py-4">
@@ -216,7 +216,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                                     }}
                                 >
                                     <LogOut className="h-4 w-4" />
-                                    Logout
+                                    Keluar
                                 </Button>
                             ) : (
                                 <Link
@@ -228,7 +228,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                                         className="w-full justify-start gap-2"
                                     >
                                         <LogIn className="h-4 w-4" />
-                                        Login
+                                        Masuk
                                     </Button>
                                 </Link>
                             )}
@@ -237,7 +237,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                 )}
             </header>
 
-            {/* Main Content */}
+            {/* Konten Utama */}
             <main className="container py-8">{children}</main>
 
             {/* Footer */}
@@ -246,21 +246,21 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
                         <div className="text-center md:text-left">
                             <p className="text-sm font-semibold text-foreground">
-                                PKKMB Management System
+                                Sistem Manajemen PKKMB
                             </p>
                             <p className="text-xs text-muted-foreground">
-                                FISIPOL UNESA 2025 Solution
+                                Solusi FISIPOL UNESA 2025
                             </p>
                         </div>
                         <div className="text-center md:text-right">
                             <p className="text-sm text-muted-foreground">
-                                {`Made with <3 by `}
+                                {`Dikembangkan dengan ❤️ oleh `}
                                 <span className="font-semibold text-foreground">
-                                    Kelompok MSDM Rendah
+                                    Kelompok MSDM Tinggi
                                 </span>
                             </p>
                             <p className="text-xs text-muted-foreground">
-                                Sistem Informasi UNESA 2025
+                                Program Studi Sistem Informasi UNESA 2025
                             </p>
                         </div>
                     </div>
