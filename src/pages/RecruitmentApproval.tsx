@@ -152,101 +152,110 @@ export default function RecruitmentApproval() {
                 {filtered.map((candidate) => (
                     <div
                         key={candidate.name}
-                        className="flex items-center justify-between rounded-lg border p-4 transition-colors hover:bg-muted/50"
+                        className="rounded-lg border p-4 transition-colors hover:bg-muted/50"
                     >
-                        <div className="flex flex-1 items-center gap-4">
-                            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
-                                {listType === "internal" ? (
-                                    <Users className="h-5 w-5 text-primary" />
-                                ) : (
-                                    <Building2 className="h-5 w-5 text-primary" />
-                                )}
-                            </div>
-                            <div className="min-w-0 flex-1">
-                                <p className="font-semibold text-foreground">
-                                    {candidate.name}
-                                </p>
-                                <p className="text-sm text-muted-foreground">
-                                    {candidate.position}
-                                </p>
-                                <p className="mt-1 text-xs text-muted-foreground">
-                                    {candidate.experience}
-                                </p>
-                            </div>
-                        </div>
+                        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                            {/* Left side: candidate info */}
+                            <div className="flex min-w-0 flex-1 items-start gap-4 sm:items-center">
+                                <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
+                                    {listType === "internal" ? (
+                                        <Users className="h-5 w-5 text-primary" />
+                                    ) : (
+                                        <Building2 className="h-5 w-5 text-primary" />
+                                    )}
+                                </div>
 
-                        <div className="flex items-center gap-4">
-                            <div className="text-right">
-                                <p
-                                    className={`text-2xl font-bold ${getScoreColor(
-                                        candidate.score,
-                                    )}`}
-                                >
-                                    {candidate.score}
-                                </p>
-                                <p className="text-xs text-muted-foreground">
-                                    Score
-                                </p>
+                                <div className="min-w-0 flex-1">
+                                    <p className="break-words font-semibold text-foreground sm:truncate">
+                                        {candidate.name}
+                                    </p>
+                                    <p className="break-words text-sm text-muted-foreground sm:truncate">
+                                        {candidate.position}
+                                    </p>
+                                    <p className="mt-1 break-words text-xs text-muted-foreground">
+                                        {candidate.experience}
+                                    </p>
+                                </div>
                             </div>
-                            <Badge className={getStatusColor(candidate.status)}>
-                                {candidate.status}
-                            </Badge>
 
-                            <div className="flex gap-1">
-                                <Button
-                                    size="icon"
-                                    variant="outline"
-                                    disabled={loading === candidate.name}
-                                    onClick={() =>
-                                        updateStatus(
-                                            listType,
-                                            candidate.name,
-                                            "accepted",
-                                        )
-                                    }
+                            {/* Right side: score + badge + buttons */}
+                            <div className="flex flex-wrap items-center justify-between gap-3 sm:flex-nowrap sm:justify-end sm:gap-4">
+                                <div className="text-left sm:text-right">
+                                    <p
+                                        className={`text-xl font-bold sm:text-2xl ${getScoreColor(candidate.score)}`}
+                                    >
+                                        {candidate.score}
+                                    </p>
+                                    <p className="text-xs text-muted-foreground">
+                                        Score
+                                    </p>
+                                </div>
+
+                                <Badge
+                                    className={`${getStatusColor(candidate.status)} text-xs sm:text-sm`}
                                 >
-                                    {loading === candidate.name ? (
-                                        <Loader2 className="h-4 w-4 animate-spin" />
-                                    ) : (
-                                        <Check className="h-4 w-4 text-green-600" />
-                                    )}
-                                </Button>
-                                <Button
-                                    size="icon"
-                                    variant="outline"
-                                    disabled={loading === candidate.name}
-                                    onClick={() =>
-                                        updateStatus(
-                                            listType,
-                                            candidate.name,
-                                            "review",
-                                        )
-                                    }
-                                >
-                                    {loading === candidate.name ? (
-                                        <Loader2 className="h-4 w-4 animate-spin" />
-                                    ) : (
-                                        <Users className="h-4 w-4 text-blue-600" />
-                                    )}
-                                </Button>
-                                <Button
-                                    size="icon"
-                                    variant="outline"
-                                    disabled={loading === candidate.name}
-                                    onClick={() =>
-                                        updateStatus(
-                                            listType,
-                                            candidate.name,
-                                            "pending",
-                                        )
-                                    }
-                                >
-                                    {loading === candidate.name ? (
-                                        <Loader2 className="h-4 w-4 animate-spin" />
-                                    ) : (
-                                        <X className="h-4 w-4 text-orange-600" />
-                                    )}
-                                </Button>
+                                    {candidate.status}
+                                </Badge>
+
+                                <div className="flex gap-1">
+                                    <Button
+                                        size="icon"
+                                        variant="outline"
+                                        disabled={loading === candidate.name}
+                                        onClick={() =>
+                                            updateStatus(
+                                                listType,
+                                                candidate.name,
+                                                "accepted",
+                                            )
+                                        }
+                                        className="flex-shrink-0"
+                                    >
+                                        {loading === candidate.name ? (
+                                            <Loader2 className="h-4 w-4 animate-spin" />
+                                        ) : (
+                                            <Check className="h-4 w-4 text-green-600" />
+                                        )}
+                                    </Button>
+                                    <Button
+                                        size="icon"
+                                        variant="outline"
+                                        disabled={loading === candidate.name}
+                                        onClick={() =>
+                                            updateStatus(
+                                                listType,
+                                                candidate.name,
+                                                "review",
+                                            )
+                                        }
+                                        className="flex-shrink-0"
+                                    >
+                                        {loading === candidate.name ? (
+                                            <Loader2 className="h-4 w-4 animate-spin" />
+                                        ) : (
+                                            <Users className="h-4 w-4 text-blue-600" />
+                                        )}
+                                    </Button>
+                                    <Button
+                                        size="icon"
+                                        variant="outline"
+                                        disabled={loading === candidate.name}
+                                        onClick={() =>
+                                            updateStatus(
+                                                listType,
+                                                candidate.name,
+                                                "pending",
+                                            )
+                                        }
+                                        className="flex-shrink-0"
+                                    >
+                                        {loading === candidate.name ? (
+                                            <Loader2 className="h-4 w-4 animate-spin" />
+                                        ) : (
+                                            <X className="h-4 w-4 text-orange-600" />
+                                        )}
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                     </div>
