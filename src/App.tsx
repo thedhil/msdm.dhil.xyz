@@ -21,6 +21,8 @@ import RecruitmentApply from "./pages/Apply";
 import PublicIncidentReport from "./pages/PublicReport";
 import IncidentManagement from "./pages/ManageInsiden";
 import MemberManagement from "./pages/Anggota";
+import Presence from "./pages/Absen";
+import ManagePresence from "./pages/AbsenAdmin";
 
 const App = () => {
     // Create QueryClient instance inside component to ensure proper React initialization
@@ -130,6 +132,26 @@ const App = () => {
                                         <MemberManagement />
                                     </Layout>
                                     //   </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/absen"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <Presence />
+                                        </Layout>
+                                    </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/absenadmin"
+                                element={
+                                    <ProtectedRoute>
+                                        <Layout>
+                                            <ManagePresence />
+                                        </Layout>
+                                    </ProtectedRoute>
                                 }
                             />
                             <Route

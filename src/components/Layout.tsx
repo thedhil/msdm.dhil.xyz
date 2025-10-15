@@ -10,10 +10,19 @@ import {
     X,
     LogOut,
     LogIn,
+    Fingerprint,
+    ClipboardList,
 } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { useAuth } from "@/contexts/AuthContext";
+
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuContent,
+    DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
 
 const navigation = [
     { name: "Beranda", href: "/", icon: LayoutDashboard },
@@ -24,6 +33,8 @@ const navigation = [
     { name: "Rekrutmen", href: "/approval", icon: Users },
     { name: "Anggota", href: "/anggota", icon: Users },
     { name: "Evaluasi", href: "/evaluation", icon: BarChart3 },
+    { name: "Presensi", href: "/absen", icon: Fingerprint },
+    { name: "Manajemen Presensi", href: "/absenadmin", icon: ClipboardList },
 ];
 
 const publicmenu = [
@@ -48,100 +59,226 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             {/* Header */}
             <header className="sticky top-0 z-50 w-full border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
                 <div className="container flex h-16 items-center justify-between">
+                    {/* Left: Logo */}
                     <div className="flex items-center gap-2">
                         <div className="to-primary-light flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary">
                             <span className="text-xl font-bold text-primary-foreground">
                                 👨🏿‍🎓
                             </span>
                         </div>
-                        {/* {!isAuthenticated && ( */}
-                            <div className="lg:hidden shrink-0 block">
-                                <h1 className="break-keep text-lg font-bold text-foreground">
-                                    Sistem Manajemen PKKMB
-                                </h1>
-                                <p className="text-xs text-muted-foreground">
-                                    FISIPOL UNESA 2025
-                                </p>
-                            </div>
-                        {/* )} */}
+                        <div className="block shrink-0">
+                            <h1 className="break-keep text-lg font-bold text-foreground">
+                                Sistem Manajemen PKKMB
+                            </h1>
+                            <p className="text-xs text-muted-foreground">
+                                FISIPOL UNESA 2025
+                            </p>
+                        </div>
                     </div>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden w-full items-center gap-1 xl:flex">
-                        <div className="flex w-full justify-center gap-x-1">
-                            {isAuthenticated
-                                ? navigation.map((item) => {
-                                      const Icon = item.icon;
-                                      const isActive =
-                                          location.pathname === item.href;
-                                      return (
-                                          <Link key={item.name} to={item.href}>
-                                              <Button
-                                                  variant={
-                                                      isActive
-                                                          ? "default"
-                                                          : "ghost"
-                                                  }
-                                                  size="sm"
-                                                  className="gap-2"
-                                              >
-                                                  <Icon className="h-4 w-4" />
-                                                  {item.name}
-                                              </Button>
-                                          </Link>
-                                      );
-                                  })
-                                : publicmenu.map((item) => {
-                                      const Icon = item.icon;
-                                      const isActive =
-                                          location.pathname === item.href;
-                                      return (
-                                          <Link key={item.name} to={item.href}>
-                                              <Button
-                                                  variant={
-                                                      isActive
-                                                          ? "default"
-                                                          : "ghost"
-                                                  }
-                                                  size="sm"
-                                                  className="gap-2"
-                                              >
-                                                  <Icon className="h-4 w-4" />
-                                                  {item.name}
-                                              </Button>
-                                          </Link>
-                                      );
-                                  })}
-                        </div>
+                    <nav className="hidden w-full items-center justify-end gap-4 md:flex">
                         {isAuthenticated ? (
-                            <Button
-                                variant="ghost"
-                                size="sm"
-                                className="gap-2"
-                                onClick={handleLogout}
-                            >
-                                <LogOut className="h-4 w-4" />
-                                Keluar
-                            </Button>
-                        ) : (
-                            <Link to="/login">
+                            <>
+                                {/* Group: Utama */}
+                                <div className="flex w-full items-center justify-center gap-x-4">
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger asChild>
+                                            <Button
+                                                variant="ghost"
+                                                className="gap-2 text-sm"
+                                            >
+                                                <LayoutDashboard className="h-4 w-4" />
+                                                Utama
+                                            </Button>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent>
+                                            {[
+                                                {
+                                                    name: "Beranda",
+                                                    href: "/",
+                                                    icon: LayoutDashboard,
+                                                },
+                                                {
+                                                    name: "Dasbor",
+                                                    href: "/dashboard",
+                                                    icon: LayoutDashboard,
+                                                },
+                                                {
+                                                    name: "Dokumen",
+                                                    href: "/documents",
+                                                    icon: FileText,
+                                                },
+                                            ].map((item) => {
+                                                const Icon = item.icon;
+                                                return (
+                                                    <DropdownMenuItem
+                                                        asChild
+                                                        key={item.name}
+                                                    >
+                                                        <Link
+                                                            to={item.href}
+                                                            className="flex items-center gap-2"
+                                                        >
+                                                            <Icon className="h-4 w-4" />
+                                                            {item.name}
+                                                        </Link>
+                                                    </DropdownMenuItem>
+                                                );
+                                            })}
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+
+                                    {/* Group: Operasional */}
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger asChild>
+                                            <Button
+                                                variant="ghost"
+                                                className="gap-2 text-sm"
+                                            >
+                                                <CheckSquare className="h-4 w-4" />
+                                                Operasional
+                                            </Button>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent>
+                                            {[
+                                                {
+                                                    name: "Laporan Insiden",
+                                                    href: "/managelapor",
+                                                    icon: AlertTriangle,
+                                                },
+                                                {
+                                                    name: "Tugas",
+                                                    href: "/tasks",
+                                                    icon: CheckSquare,
+                                                },
+                                                {
+                                                    name: "Presensi",
+                                                    href: "/absen",
+                                                    icon: Fingerprint,
+                                                },
+                                                {
+                                                    name: "Manajemen Presensi",
+                                                    href: "/absenadmin",
+                                                    icon: ClipboardList,
+                                                },
+                                            ].map((item) => {
+                                                const Icon = item.icon;
+                                                return (
+                                                    <DropdownMenuItem
+                                                        asChild
+                                                        key={item.name}
+                                                    >
+                                                        <Link
+                                                            to={item.href}
+                                                            className="flex items-center gap-2"
+                                                        >
+                                                            <Icon className="h-4 w-4" />
+                                                            {item.name}
+                                                        </Link>
+                                                    </DropdownMenuItem>
+                                                );
+                                            })}
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+
+                                    {/* Group: SDM */}
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger asChild>
+                                            <Button
+                                                variant="ghost"
+                                                className="gap-2 text-sm"
+                                            >
+                                                <Users className="h-4 w-4" />
+                                                SDM
+                                            </Button>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent>
+                                            {[
+                                                {
+                                                    name: "Rekrutmen",
+                                                    href: "/approval",
+                                                    icon: Users,
+                                                },
+                                                {
+                                                    name: "Anggota",
+                                                    href: "/anggota",
+                                                    icon: Users,
+                                                },
+                                                {
+                                                    name: "Evaluasi",
+                                                    href: "/evaluation",
+                                                    icon: BarChart3,
+                                                },
+                                            ].map((item) => {
+                                                const Icon = item.icon;
+                                                return (
+                                                    <DropdownMenuItem
+                                                        asChild
+                                                        key={item.name}
+                                                    >
+                                                        <Link
+                                                            to={item.href}
+                                                            className="flex items-center gap-2"
+                                                        >
+                                                            <Icon className="h-4 w-4" />
+                                                            {item.name}
+                                                        </Link>
+                                                    </DropdownMenuItem>
+                                                );
+                                            })}
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+                                </div>
+
                                 <Button
-                                    variant="default"
+                                    onClick={handleLogout}
+                                    variant="outline"
                                     size="sm"
-                                    className="gap-2"
+                                    className="ml-2"
                                 >
-                                    <LogIn className="h-4 w-4" />
-                                    Masuk
+                                    <LogOut className="h-4 w-4" />
+                                    Keluar
                                 </Button>
-                            </Link>
+                            </>
+                        ) : (
+                            <>
+                                {publicmenu.map((item) => {
+                                    const Icon = item.icon;
+                                    const isActive =
+                                        location.pathname === item.href;
+                                    return (
+                                        <Link key={item.name} to={item.href}>
+                                            <Button
+                                                variant={
+                                                    isActive
+                                                        ? "default"
+                                                        : "ghost"
+                                                }
+                                                size="sm"
+                                                className="gap-2"
+                                            >
+                                                <Icon className="h-4 w-4" />
+                                                {item.name}
+                                            </Button>
+                                        </Link>
+                                    );
+                                })}
+                                <Link to="/login">
+                                    <Button size="sm" className="gap-2">
+                                        <LogIn className="h-4 w-4" />
+                                        Masuk
+                                    </Button>
+                                </Link>
+                            </>
                         )}
                     </nav>
 
-                    {/* Tombol Menu Mobile */}
+                    {/* Mobile Menu Button */}
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="xl:hidden"
+                        className="md:hidden"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
                         {mobileMenuOpen ? (
@@ -152,9 +289,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     </Button>
                 </div>
 
-                {/* Navigasi Mobile */}
+                {/* Mobile Navigation */}
                 {mobileMenuOpen && (
-                    <div className="border-t bg-card xl:hidden">
+                    <div className="border-t bg-card md:hidden">
                         <nav className="container flex flex-col gap-2 py-4">
                             {isAuthenticated
                                 ? navigation.map((item) => {
