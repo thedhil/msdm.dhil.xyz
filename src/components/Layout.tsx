@@ -22,6 +22,7 @@ const navigation = [
     { name: "Laporan Insiden", href: "/managelapor", icon: AlertTriangle },
     { name: "Tugas", href: "/tasks", icon: CheckSquare },
     { name: "Rekrutmen", href: "/approval", icon: Users },
+    { name: "Anggota", href: "/anggota", icon: Users },
     { name: "Evaluasi", href: "/evaluation", icon: BarChart3 },
 ];
 
@@ -53,14 +54,16 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                                 👨🏿‍🎓
                             </span>
                         </div>
-                        <div className="hidden shrink-0 md:block">
-                            <h1 className="break-keep text-lg font-bold text-foreground">
-                                Sistem Manajemen PKKMB
-                            </h1>
-                            <p className="text-xs text-muted-foreground">
-                                FISIPOL UNESA 2025
-                            </p>
-                        </div>
+                        {/* {!isAuthenticated && ( */}
+                            <div className="lg:hidden shrink-0 block">
+                                <h1 className="break-keep text-lg font-bold text-foreground">
+                                    Sistem Manajemen PKKMB
+                                </h1>
+                                <p className="text-xs text-muted-foreground">
+                                    FISIPOL UNESA 2025
+                                </p>
+                            </div>
+                        {/* )} */}
                     </div>
 
                     {/* Desktop Navigation */}

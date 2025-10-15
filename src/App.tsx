@@ -20,6 +20,7 @@ import RecruitmentApproval from "./pages/RecruitmentApproval";
 import RecruitmentApply from "./pages/Apply";
 import PublicIncidentReport from "./pages/PublicReport";
 import IncidentManagement from "./pages/ManageInsiden";
+import MemberManagement from "./pages/Anggota";
 
 const App = () => {
     // Create QueryClient instance inside component to ensure proper React initialization
@@ -117,6 +118,16 @@ const App = () => {
                                     //   <ProtectedRoute>
                                     <Layout>
                                         <PublicIncidentReport />
+                                    </Layout>
+                                    //   </ProtectedRoute>
+                                }
+                            />
+                            <Route
+                                path="/anggota"
+                                element={
+                                    //   <ProtectedRoute>
+                                    <Layout>
+                                        <MemberManagement />
                                     </Layout>
                                     //   </ProtectedRoute>
                                 }

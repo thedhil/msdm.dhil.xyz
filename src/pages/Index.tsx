@@ -111,7 +111,7 @@ const Index = () => {
                                     <ArrowRight className="h-4 w-4" />
                                 </Button>
                             </Link>
-                            <Link to="/recruitment">
+                            <Link to="/apply">
                                 <Button
                                     size="lg"
                                     variant="outline"
@@ -282,7 +282,7 @@ const Index = () => {
                                     <ArrowRight className="h-4 w-4" />
                                 </Button>
                             </Link>
-                            <Link to="/recruitment">
+                            <Link to="/apply">
                                 <Button
                                     size="lg"
                                     variant="outline"
