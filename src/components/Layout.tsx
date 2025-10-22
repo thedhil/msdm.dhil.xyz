@@ -35,6 +35,8 @@ const navigation = [
     { name: "Evaluasi", href: "/evaluation", icon: BarChart3 },
     { name: "Presensi", href: "/absen", icon: Fingerprint },
     { name: "Manajemen Presensi", href: "/absenadmin", icon: ClipboardList },
+    { name: "Laporkan Insiden", href: "/lapor", icon: Users },
+    { name: "Rekrutmen", href: "/apply", icon: Users },
 ];
 
 const publicmenu = [
@@ -143,6 +145,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                                         <DropdownMenuContent>
                                             {[
                                                 {
+                                                    name: "Laporkan Insiden",
+                                                    href: "/lapor",
+                                                    icon: AlertTriangle,
+                                                },
+                                                {
                                                     name: "Laporan Insiden",
                                                     href: "/managelapor",
                                                     icon: AlertTriangle,
@@ -197,6 +204,11 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                                             {[
                                                 {
                                                     name: "Rekrutmen",
+                                                    href: "/apply",
+                                                    icon: Users,
+                                                },
+                                                {
+                                                    name: "Kelola Rekrutmen",
                                                     href: "/approval",
                                                     icon: Users,
                                                 },
