@@ -18,54 +18,57 @@ import {
 
 const Evaluation = () => {
     const teamPerformance = [
-        { team: "Logistics Team", score: 92, tasks: 45, completed: 42 },
-        { team: "Technical Team", score: 88, tasks: 38, completed: 35 },
-        { team: "Registration Team", score: 85, tasks: 52, completed: 47 },
-        { team: "Documentation Team", score: 90, tasks: 28, completed: 26 },
-        { team: "Security Team", score: 78, tasks: 35, completed: 30 },
+        { team: "Tim Logistik", score: 92, tasks: 45, completed: 42 },
+        { team: "Tim Teknis", score: 88, tasks: 38, completed: 35 },
+        { team: "Tim Registrasi", score: 85, tasks: 52, completed: 47 },
+        { team: "Tim Dokumentasi", score: 90, tasks: 28, completed: 26 },
+        { team: "Tim Keamanan", score: 78, tasks: 35, completed: 30 },
     ];
 
     const individuals = [
         {
             name: "Andi Pratama",
-            role: "Logistics Lead",
+            role: "Koordinator Logistik",
             score: 95,
             rating: 4.8,
         },
         {
             name: "Siti Nurhaliza",
-            role: "Documentation",
+            role: "Dokumentasi",
             score: 93,
             rating: 4.9,
         },
         {
             name: "Budi Santoso",
-            role: "Technical Lead",
+            role: "Koordinator Teknis",
             score: 90,
             rating: 4.7,
         },
-        { name: "Dewi Lestari", role: "Registration", score: 87, rating: 4.6 },
-        { name: "Rudi Hermawan", role: "Security", score: 82, rating: 4.4 },
+        { name: "Dewi Lestari", role: "Registrasi", score: 87, rating: 4.6 },
+        { name: "Rudi Hermawan", role: "Keamanan", score: 82, rating: 4.4 },
     ];
 
     const metrics = [
         {
-            category: "Performance Appraisal",
-            description: "Objective measurement of task completion and quality",
+            category: "Penilaian Kinerja",
+            description:
+                "Pengukuran objektif terhadap penyelesaian tugas dan kualitas hasil kerja",
             score: 87,
             icon: Target,
             color: "bg-blue-100 text-blue-700",
         },
         {
             category: "Reward & Punishment",
-            description: "Recognition system for outstanding performance",
+            description:
+                "Sistem penghargaan untuk kinerja luar biasa dan evaluasi yang adil",
             score: 92,
             icon: Award,
             color: "bg-green-100 text-green-700",
         },
         {
-            category: "Herzberg Motivation",
-            description: "Job satisfaction and motivation factors analysis",
+            category: "Motivasi Herzberg",
+            description:
+                "Analisis faktor kepuasan kerja dan motivasi berdasarkan teori Herzberg",
             score: 85,
             icon: TrendingUp,
             color: "bg-purple-100 text-purple-700",
@@ -81,27 +84,26 @@ const Evaluation = () => {
 
     const getPerformanceBadge = (score: number) => {
         if (score >= 90)
-            return { label: "Excellent", variant: "default" as const };
+            return { label: "Sangat Baik", variant: "default" as const };
         if (score >= 80)
-            return { label: "Good", variant: "secondary" as const };
-        if (score >= 70)
-            return { label: "Satisfactory", variant: "outline" as const };
-        return { label: "Needs Improvement", variant: "destructive" as const };
+            return { label: "Baik", variant: "secondary" as const };
+        if (score >= 70) return { label: "Cukup", variant: "outline" as const };
+        return { label: "Perlu Peningkatan", variant: "destructive" as const };
     };
 
     return (
         <div className="space-y-8">
             <div>
                 <h1 className="mb-2 text-3xl font-bold text-foreground">
-                    Performance Evaluation
+                    Evaluasi Kinerja
                 </h1>
                 <p className="text-muted-foreground">
-                    Comprehensive metrics using HR theories and data-driven
-                    assessment
+                    Metrik komprehensif menggunakan teori SDM dan penilaian
+                    berbasis data
                 </p>
             </div>
 
-            {/* HR Theory Metrics */}
+            {/* Metrik Teori SDM */}
             <div className="grid gap-6 lg:grid-cols-3">
                 {metrics.map((metric) => {
                     const Icon = metric.icon;
@@ -138,15 +140,15 @@ const Evaluation = () => {
                 })}
             </div>
 
-            {/* Team Performance */}
+            {/* Kinerja Tim */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <Users className="h-5 w-5 text-primary" />
-                        Team Performance Overview
+                        Ringkasan Kinerja Tim
                     </CardTitle>
                     <CardDescription>
-                        Comparative analysis of committee team effectiveness
+                        Analisis perbandingan efektivitas setiap tim panitia
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -166,7 +168,7 @@ const Evaluation = () => {
                                                 <div className="flex items-center gap-3">
                                                     <span className="text-sm text-muted-foreground">
                                                         {team.completed}/
-                                                        {team.tasks} tasks
+                                                        {team.tasks} tugas
                                                     </span>
                                                     <Badge
                                                         variant={badge.variant}
@@ -182,9 +184,7 @@ const Evaluation = () => {
                                             </div>
                                             <div className="space-y-2">
                                                 <div className="flex justify-between text-xs text-muted-foreground">
-                                                    <span>
-                                                        Performance Score
-                                                    </span>
+                                                    <span>Nilai Kinerja</span>
                                                     <span>{team.score}%</span>
                                                 </div>
                                                 <Progress
@@ -192,7 +192,9 @@ const Evaluation = () => {
                                                     className="h-2"
                                                 />
                                                 <div className="mt-1 flex justify-between text-xs text-muted-foreground">
-                                                    <span>Task Completion</span>
+                                                    <span>
+                                                        Penyelesaian Tugas
+                                                    </span>
                                                     <span>
                                                         {completionRate.toFixed(
                                                             0,
@@ -214,15 +216,16 @@ const Evaluation = () => {
                 </CardContent>
             </Card>
 
-            {/* Individual Performance */}
+            {/* Kinerja Individu */}
             <Card>
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                         <BarChart3 className="h-5 w-5 text-primary" />
-                        Top Performers
+                        Anggota Berprestasi
                     </CardTitle>
                     <CardDescription>
-                        Individual committee member performance rankings
+                        Peringkat kinerja individu panitia berdasarkan hasil
+                        evaluasi
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -266,7 +269,7 @@ const Evaluation = () => {
                                             {individual.score}
                                         </p>
                                         <p className="text-xs text-muted-foreground">
-                                            Score
+                                            Nilai
                                         </p>
                                     </div>
                                 </div>
@@ -276,12 +279,12 @@ const Evaluation = () => {
                 </CardContent>
             </Card>
 
-            {/* Key Insights */}
+            {/* Wawasan Utama */}
             <Card className="bg-gradient-to-br from-primary/5 to-accent/5">
                 <CardHeader>
-                    <CardTitle>Performance Insights</CardTitle>
+                    <CardTitle>Wawasan Kinerja</CardTitle>
                     <CardDescription>
-                        Data-driven recommendations for improvement
+                        Rekomendasi berbasis data untuk peningkatan performa
                     </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -291,12 +294,12 @@ const Evaluation = () => {
                         </div>
                         <div>
                             <p className="font-medium text-foreground">
-                                Outstanding Team Coordination
+                                Koordinasi Tim yang Luar Biasa
                             </p>
                             <p className="text-sm text-muted-foreground">
-                                Logistics and Documentation teams show
-                                exceptional collaboration and task completion
-                                rates above 90%
+                                Tim Logistik dan Dokumentasi menunjukkan
+                                kolaborasi luar biasa dengan tingkat
+                                penyelesaian tugas di atas 90%
                             </p>
                         </div>
                     </div>
@@ -306,12 +309,12 @@ const Evaluation = () => {
                         </div>
                         <div>
                             <p className="font-medium text-foreground">
-                                Recognition Opportunities
+                                Peluang Penghargaan
                             </p>
                             <p className="text-sm text-muted-foreground">
-                                Top 5 performers demonstrate leadership
-                                qualities suitable for coordinator roles in
-                                future events
+                                5 anggota berprestasi menunjukkan kualitas
+                                kepemimpinan yang potensial untuk posisi
+                                koordinator di acara berikutnya
                             </p>
                         </div>
                     </div>
@@ -321,12 +324,12 @@ const Evaluation = () => {
                         </div>
                         <div>
                             <p className="font-medium text-foreground">
-                                Areas for Improvement
+                                Area yang Perlu Ditingkatkan
                             </p>
                             <p className="text-sm text-muted-foreground">
-                                Security team would benefit from additional
-                                training sessions to improve response time and
-                                protocol adherence
+                                Tim Keamanan disarankan untuk mengikuti sesi
+                                pelatihan tambahan guna meningkatkan waktu
+                                respons dan kepatuhan terhadap protokol
                             </p>
                         </div>
                     </div>

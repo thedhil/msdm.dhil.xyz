@@ -28,69 +28,69 @@ export default function RecruitmentApproval() {
     const internalCandidates = [
         {
             name: "Andi Pratama",
-            position: "Logistics Coordinator",
+            position: "Koordinator Logistik",
             score: 92,
-            status: "accepted",
-            experience: "2 years event management",
+            status: "diterima",
+            experience: "2 tahun pengalaman manajemen acara",
         },
         {
             name: "Siti Nurhaliza",
-            position: "Documentation Lead",
+            position: "Kepala Dokumentasi",
             score: 88,
-            status: "accepted",
-            experience: "Photography & videography",
+            status: "diterima",
+            experience: "Fotografi & videografi",
         },
         {
             name: "Budi Santoso",
-            position: "Technical Support",
+            position: "Dukungan Teknis",
             score: 85,
-            status: "review",
-            experience: "IT infrastructure",
+            status: "tinjauan",
+            experience: "Infrastruktur TI",
         },
         {
             name: "Dewi Lestari",
-            position: "Registration Team",
+            position: "Tim Registrasi",
             score: 79,
-            status: "review",
-            experience: "Customer service",
+            status: "tinjauan",
+            experience: "Pelayanan pelanggan",
         },
         {
             name: "Rudi Hermawan",
-            position: "Security Team",
+            position: "Tim Keamanan",
             score: 65,
-            status: "pending",
-            experience: "Campus security volunteer",
+            status: "menunggu",
+            experience: "Relawan keamanan kampus",
         },
     ];
 
     const externalCandidates = [
         {
             name: "Ahmad Fauzi",
-            position: "Event Coordinator",
+            position: "Koordinator Acara",
             score: 95,
-            status: "accepted",
-            experience: "3 years professional event management",
+            status: "diterima",
+            experience: "3 tahun pengalaman profesional manajemen acara",
         },
         {
             name: "Maya Putri",
-            position: "Media Relations",
+            position: "Hubungan Media",
             score: 91,
-            status: "accepted",
-            experience: "PR specialist at corporate firm",
+            status: "diterima",
+            experience: "Spesialis PR di perusahaan swasta",
         },
         {
             name: "Rizky Pratama",
-            position: "IT Infrastructure",
+            position: "Infrastruktur TI",
             score: 88,
-            status: "review",
-            experience: "System administrator",
+            status: "tinjauan",
+            experience: "Administrator sistem",
         },
         {
             name: "Linda Sari",
-            position: "Finance Team",
+            position: "Tim Keuangan",
             score: 83,
-            status: "review",
-            experience: "Accounting professional",
+            status: "tinjauan",
+            experience: "Profesional akuntansi",
         },
     ];
 
@@ -99,9 +99,9 @@ export default function RecruitmentApproval() {
 
     const getStatusColor = (status: string) => {
         switch (status) {
-            case "accepted":
+            case "diterima":
                 return "bg-green-100 text-green-700";
-            case "review":
+            case "tinjauan":
                 return "bg-blue-100 text-blue-700";
             default:
                 return "bg-orange-100 text-orange-700";
@@ -155,7 +155,7 @@ export default function RecruitmentApproval() {
                         className="rounded-lg border p-4 transition-colors hover:bg-muted/50"
                     >
                         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                            {/* Left side: candidate info */}
+                            {/* Kiri: info kandidat */}
                             <div className="flex min-w-0 flex-1 items-start gap-4 sm:items-center">
                                 <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary/10">
                                     {listType === "internal" ? (
@@ -178,7 +178,7 @@ export default function RecruitmentApproval() {
                                 </div>
                             </div>
 
-                            {/* Right side: score + badge + buttons */}
+                            {/* Kanan: skor, status, dan tombol */}
                             <div className="flex flex-wrap items-center justify-between gap-3 sm:flex-nowrap sm:justify-end sm:gap-4">
                                 <div className="text-left sm:text-right">
                                     <p
@@ -187,7 +187,7 @@ export default function RecruitmentApproval() {
                                         {candidate.score}
                                     </p>
                                     <p className="text-xs text-muted-foreground">
-                                        Score
+                                        Skor
                                     </p>
                                 </div>
 
@@ -206,7 +206,7 @@ export default function RecruitmentApproval() {
                                             updateStatus(
                                                 listType,
                                                 candidate.name,
-                                                "accepted",
+                                                "diterima",
                                             )
                                         }
                                         className="flex-shrink-0"
@@ -225,7 +225,7 @@ export default function RecruitmentApproval() {
                                             updateStatus(
                                                 listType,
                                                 candidate.name,
-                                                "review",
+                                                "tinjauan",
                                             )
                                         }
                                         className="flex-shrink-0"
@@ -244,7 +244,7 @@ export default function RecruitmentApproval() {
                                             updateStatus(
                                                 listType,
                                                 candidate.name,
-                                                "pending",
+                                                "menunggu",
                                             )
                                         }
                                         className="flex-shrink-0"
@@ -268,34 +268,38 @@ export default function RecruitmentApproval() {
         <div className="space-y-8">
             <div>
                 <h1 className="mb-2 text-3xl font-bold text-foreground">
-                    Recruitment Review
+                    Tinjauan Rekrutmen
                 </h1>
                 <p className="text-muted-foreground">
-                    Admin dashboard for internal committee and external
-                    professional approval
+                    Dasbor admin untuk persetujuan panitia internal dan
+                    profesional eksternal
                 </p>
             </div>
 
             <Card>
                 <CardHeader>
                     <div className="flex items-center justify-between">
-                        <CardTitle>Candidate Overview</CardTitle>
+                        <CardTitle>Ringkasan Kandidat</CardTitle>
                         <Select value={filter} onValueChange={setFilter}>
                             <SelectTrigger className="w-[160px]">
                                 <SelectValue placeholder="Filter status" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="all">All</SelectItem>
-                                <SelectItem value="accepted">
-                                    Accepted
+                                <SelectItem value="all">Semua</SelectItem>
+                                <SelectItem value="diterima">
+                                    Diterima
                                 </SelectItem>
-                                <SelectItem value="review">Review</SelectItem>
-                                <SelectItem value="pending">Pending</SelectItem>
+                                <SelectItem value="tinjauan">
+                                    Tinjauan
+                                </SelectItem>
+                                <SelectItem value="menunggu">
+                                    Menunggu
+                                </SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
                     <CardDescription>
-                        Switch between internal and external candidates
+                        Beralih antara kandidat internal dan eksternal
                     </CardDescription>
                 </CardHeader>
 
@@ -312,7 +316,7 @@ export default function RecruitmentApproval() {
                             </TabsTrigger>
                             <TabsTrigger value="external" className="gap-2">
                                 <Building2 className="h-4 w-4" />
-                                External
+                                Eksternal
                             </TabsTrigger>
                         </TabsList>
 

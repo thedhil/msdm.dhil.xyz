@@ -33,42 +33,43 @@ const IncidentManagement = () => {
     const [reports, setReports] = useState([
         {
             id: "INC-101",
-            title: "Projector not working in Hall B",
+            title: "Proyektor tidak berfungsi di Aula B",
             reporter: "John Doe",
             contact: "john@example.com",
-            severity: "high",
-            status: "open",
-            time: "5 mins ago",
+            severity: "tinggi",
+            status: "terbuka",
+            time: "5 menit yang lalu",
             description:
-                "The projector went off during the session and won't restart.",
+                "Proyektor mati saat sesi berlangsung dan tidak bisa dinyalakan kembali.",
         },
         {
             id: "INC-102",
-            title: "Slippery floor near entrance",
-            reporter: "Visitor",
+            title: "Lantai licin di dekat pintu masuk",
+            reporter: "Pengunjung",
             contact: "-",
-            severity: "medium",
-            status: "in-progress",
-            time: "20 mins ago",
-            description: "Spilled drink causing a slip hazard near gate A.",
+            severity: "sedang",
+            status: "proses",
+            time: "20 menit yang lalu",
+            description:
+                "Minuman tumpah menyebabkan lantai licin di gerbang A.",
         },
         {
             id: "INC-103",
-            title: "Lost bag report",
+            title: "Laporan tas hilang",
             reporter: "Aulia Rahman",
             contact: "aulia@gmail.com",
-            severity: "low",
-            status: "resolved",
-            time: "2 hours ago",
-            description: "Attendee misplaced bag in cafeteria area.",
+            severity: "rendah",
+            status: "selesai",
+            time: "2 jam yang lalu",
+            description: "Peserta kehilangan tas di area kafetaria.",
         },
     ]);
 
     const getSeverityVariant = (severity: string) => {
         switch (severity) {
-            case "high":
+            case "tinggi":
                 return "destructive";
-            case "medium":
+            case "sedang":
                 return "default";
             default:
                 return "secondary";
@@ -77,9 +78,9 @@ const IncidentManagement = () => {
 
     const getStatusColor = (status: string) => {
         switch (status) {
-            case "resolved":
+            case "selesai":
                 return "bg-green-100 text-green-700";
-            case "in-progress":
+            case "proses":
                 return "bg-blue-100 text-blue-700";
             default:
                 return "bg-orange-100 text-orange-700";
@@ -88,9 +89,9 @@ const IncidentManagement = () => {
 
     const getStatusIcon = (status: string) => {
         switch (status) {
-            case "resolved":
+            case "selesai":
                 return <CheckCircle2 className="h-4 w-4" />;
-            case "in-progress":
+            case "proses":
                 return <Clock className="h-4 w-4" />;
             default:
                 return <AlertTriangle className="h-4 w-4" />;
@@ -116,11 +117,11 @@ const IncidentManagement = () => {
         <div className="space-y-8">
             <div>
                 <h1 className="mb-2 text-3xl font-bold text-foreground">
-                    Incident Management
+                    Manajemen Insiden
                 </h1>
                 <p className="text-muted-foreground">
-                    Admin control panel for reviewing and resolving public
-                    incident reports
+                    Panel kontrol admin untuk meninjau dan menyelesaikan laporan
+                    insiden dari publik
                 </p>
             </div>
 
@@ -128,9 +129,9 @@ const IncidentManagement = () => {
                 <CardHeader>
                     <div className="flex items-center justify-between">
                         <div>
-                            <CardTitle>All Reports</CardTitle>
+                            <CardTitle>Semua Laporan</CardTitle>
                             <CardDescription>
-                                Manage and update report statuses
+                                Kelola dan perbarui status laporan
                             </CardDescription>
                         </div>
                         <Select value={filter} onValueChange={setFilter}>
@@ -138,14 +139,12 @@ const IncidentManagement = () => {
                                 <SelectValue placeholder="Filter status" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="all">All</SelectItem>
-                                <SelectItem value="open">Open</SelectItem>
-                                <SelectItem value="in-progress">
-                                    In Progress
+                                <SelectItem value="all">Semua</SelectItem>
+                                <SelectItem value="terbuka">Terbuka</SelectItem>
+                                <SelectItem value="proses">
+                                    Sedang Diproses
                                 </SelectItem>
-                                <SelectItem value="resolved">
-                                    Resolved
-                                </SelectItem>
+                                <SelectItem value="selesai">Selesai</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -158,9 +157,9 @@ const IncidentManagement = () => {
                                 key={report.id}
                                 className="rounded-lg border p-4 transition-colors hover:bg-muted/50"
                             >
-                                {/* top section */}
+                                {/* Bagian Atas */}
                                 <div className="mb-2 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                                    {/* left info */}
+                                    {/* Info Kiri */}
                                     <div className="flex flex-col gap-1">
                                         <div className="flex flex-wrap items-center gap-2">
                                             <Badge
@@ -179,12 +178,12 @@ const IncidentManagement = () => {
                                         </p>
 
                                         <div className="text-xs text-muted-foreground">
-                                            Reported by {report.reporter} ·{" "}
+                                            Dilaporkan oleh {report.reporter} ·{" "}
                                             {report.contact}
                                         </div>
                                     </div>
 
-                                    {/* right badges */}
+                                    {/* Status Kanan */}
                                     <div className="flex flex-col gap-2 sm:items-end">
                                         <div className="flex flex-wrap items-center gap-2">
                                             <Badge
@@ -215,14 +214,14 @@ const IncidentManagement = () => {
                                     </div>
                                 </div>
 
-                                {/* action buttons */}
+                                {/* Tombol Aksi */}
                                 <div className="mt-3 flex flex-wrap justify-end gap-2">
                                     <Button
                                         size="icon"
                                         variant="outline"
                                         disabled={loading === report.id}
                                         onClick={() =>
-                                            updateStatus(report.id, "open")
+                                            updateStatus(report.id, "terbuka")
                                         }
                                         className="flex-shrink-0"
                                     >
@@ -237,10 +236,7 @@ const IncidentManagement = () => {
                                         variant="outline"
                                         disabled={loading === report.id}
                                         onClick={() =>
-                                            updateStatus(
-                                                report.id,
-                                                "in-progress",
-                                            )
+                                            updateStatus(report.id, "proses")
                                         }
                                         className="flex-shrink-0"
                                     >
@@ -255,7 +251,7 @@ const IncidentManagement = () => {
                                         variant="outline"
                                         disabled={loading === report.id}
                                         onClick={() =>
-                                            updateStatus(report.id, "resolved")
+                                            updateStatus(report.id, "selesai")
                                         }
                                         className="flex-shrink-0"
                                     >

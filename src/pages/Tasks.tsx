@@ -7,123 +7,123 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckSquare, Circle, Clock, CheckCircle2, Plus } from "lucide-react";
+import { CheckCircle2, Circle, Clock, Plus } from "lucide-react";
 
 const Tasks = () => {
     const columns = [
         {
-            title: "To Do",
+            title: "Belum Dikerjakan",
             status: "todo",
             color: "border-slate-300",
             tasks: [
                 {
                     id: "T-101",
-                    title: "Set up registration counters",
-                    assignee: "Logistics Team",
-                    priority: "high",
-                    deadline: "Dec 18",
-                    tags: ["venue", "setup"],
+                    title: "Menyiapkan meja registrasi",
+                    assignee: "Tim Logistik",
+                    priority: "tinggi",
+                    deadline: "18 Des",
+                    tags: ["venue", "persiapan"],
                 },
                 {
                     id: "T-102",
-                    title: "Print attendee name tags",
-                    assignee: "Admin Team",
-                    priority: "medium",
-                    deadline: "Dec 19",
-                    tags: ["materials"],
+                    title: "Mencetak kartu nama peserta",
+                    assignee: "Tim Administrasi",
+                    priority: "sedang",
+                    deadline: "19 Des",
+                    tags: ["materi"],
                 },
                 {
                     id: "T-103",
-                    title: "Prepare welcome kits",
-                    assignee: "Coordination Team",
-                    priority: "medium",
-                    deadline: "Dec 20",
-                    tags: ["materials", "attendees"],
+                    title: "Menyiapkan paket sambutan",
+                    assignee: "Tim Koordinasi",
+                    priority: "sedang",
+                    deadline: "20 Des",
+                    tags: ["materi", "peserta"],
                 },
             ],
         },
         {
-            title: "In Progress",
+            title: "Sedang Dikerjakan",
             status: "in-progress",
             color: "border-blue-300",
             tasks: [
                 {
                     id: "T-104",
-                    title: "Test audio system in all rooms",
-                    assignee: "Technical Team",
-                    priority: "high",
-                    deadline: "Today",
-                    tags: ["technical", "urgent"],
+                    title: "Menguji sistem audio di semua ruangan",
+                    assignee: "Tim Teknis",
+                    priority: "tinggi",
+                    deadline: "Hari ini",
+                    tags: ["teknis", "mendesak"],
                 },
                 {
                     id: "T-105",
-                    title: "Coordinate with catering service",
-                    assignee: "F&B Committee",
-                    priority: "high",
-                    deadline: "Today",
-                    tags: ["catering"],
+                    title: "Koordinasi dengan layanan katering",
+                    assignee: "Panitia F&B",
+                    priority: "tinggi",
+                    deadline: "Hari ini",
+                    tags: ["katering"],
                 },
                 {
                     id: "T-106",
-                    title: "Final venue walkthrough",
-                    assignee: "Operations Team",
-                    priority: "medium",
-                    deadline: "Tomorrow",
-                    tags: ["venue", "inspection"],
+                    title: "Pemeriksaan akhir lokasi acara",
+                    assignee: "Tim Operasional",
+                    priority: "sedang",
+                    deadline: "Besok",
+                    tags: ["venue", "pemeriksaan"],
                 },
             ],
         },
         {
-            title: "Review",
+            title: "Tinjauan",
             status: "review",
             color: "border-yellow-300",
             tasks: [
                 {
                     id: "T-107",
-                    title: "Review emergency procedures",
-                    assignee: "Safety Team",
-                    priority: "high",
-                    deadline: "Tomorrow",
-                    tags: ["safety", "procedures"],
+                    title: "Meninjau prosedur darurat",
+                    assignee: "Tim Keamanan",
+                    priority: "tinggi",
+                    deadline: "Besok",
+                    tags: ["keamanan", "prosedur"],
                 },
                 {
                     id: "T-108",
-                    title: "Verify attendee list accuracy",
-                    assignee: "Registration Team",
-                    priority: "medium",
-                    deadline: "Dec 19",
-                    tags: ["data", "attendees"],
+                    title: "Memeriksa keakuratan daftar peserta",
+                    assignee: "Tim Registrasi",
+                    priority: "sedang",
+                    deadline: "19 Des",
+                    tags: ["data", "peserta"],
                 },
             ],
         },
         {
-            title: "Done",
+            title: "Selesai",
             status: "done",
             color: "border-green-300",
             tasks: [
                 {
                     id: "T-109",
-                    title: "Book venue for main event",
-                    assignee: "Coordination Team",
-                    priority: "high",
-                    deadline: "Dec 10",
+                    title: "Memesan tempat untuk acara utama",
+                    assignee: "Tim Koordinasi",
+                    priority: "tinggi",
+                    deadline: "10 Des",
                     tags: ["venue"],
                 },
                 {
                     id: "T-110",
-                    title: "Design event branding materials",
-                    assignee: "Creative Team",
-                    priority: "medium",
-                    deadline: "Dec 12",
-                    tags: ["design", "marketing"],
+                    title: "Mendesain materi branding acara",
+                    assignee: "Tim Kreatif",
+                    priority: "sedang",
+                    deadline: "12 Des",
+                    tags: ["desain", "promosi"],
                 },
                 {
                     id: "T-111",
-                    title: "Create event schedule",
-                    assignee: "Program Team",
-                    priority: "high",
-                    deadline: "Dec 13",
-                    tags: ["planning"],
+                    title: "Membuat jadwal acara",
+                    assignee: "Tim Program",
+                    priority: "tinggi",
+                    deadline: "13 Des",
+                    tags: ["perencanaan"],
                 },
             ],
         },
@@ -131,9 +131,9 @@ const Tasks = () => {
 
     const getPriorityColor = (priority: string) => {
         switch (priority) {
-            case "high":
+            case "tinggi":
                 return "destructive";
-            case "medium":
+            case "sedang":
                 return "default";
             default:
                 return "secondary";
@@ -158,20 +158,20 @@ const Tasks = () => {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="mb-2 text-3xl font-bold text-foreground">
-                        Task Management
+                        Manajemen Tugas
                     </h1>
                     <p className="text-muted-foreground">
-                        Kanban board for tracking committee responsibilities and
-                        deadlines
+                        Papan Kanban untuk memantau tanggung jawab panitia dan
+                        tenggat waktu
                     </p>
                 </div>
                 <Button className="gap-2">
                     <Plus className="h-4 w-4" />
-                    Add Task
+                    Tambah Tugas
                 </Button>
             </div>
 
-            {/* Kanban Board */}
+            {/* Papan Kanban */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {columns.map((column) => (
                     <Card
@@ -219,13 +219,13 @@ const Tasks = () => {
                                         </h4>
                                         <div className="space-y-2">
                                             <p className="text-xs text-muted-foreground">
-                                                Assigned to:{" "}
+                                                Ditugaskan kepada:{" "}
                                                 <span className="font-medium">
                                                     {task.assignee}
                                                 </span>
                                             </p>
                                             <p className="text-xs text-muted-foreground">
-                                                Due:{" "}
+                                                Tenggat:{" "}
                                                 <span className="font-medium">
                                                     {task.deadline}
                                                 </span>
@@ -251,7 +251,7 @@ const Tasks = () => {
                                     className="w-full justify-start gap-2 text-muted-foreground hover:text-foreground"
                                 >
                                     <Plus className="h-4 w-4" />
-                                    Add task
+                                    Tambah tugas
                                 </Button>
                             )}
                         </CardContent>
@@ -259,12 +259,12 @@ const Tasks = () => {
                 ))}
             </div>
 
-            {/* Task Summary */}
+            {/* Ringkasan Tugas */}
             <Card>
                 <CardHeader>
-                    <CardTitle>Task Summary</CardTitle>
+                    <CardTitle>Ringkasan Tugas</CardTitle>
                     <CardDescription>
-                        Overall progress across all committees
+                        Progres keseluruhan dari semua panitia
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -277,7 +277,7 @@ const Tasks = () => {
                                 8
                             </p>
                             <p className="text-sm text-muted-foreground">
-                                To Do
+                                Belum Dikerjakan
                             </p>
                         </div>
                         <div className="text-center">
@@ -288,7 +288,7 @@ const Tasks = () => {
                                 6
                             </p>
                             <p className="text-sm text-muted-foreground">
-                                In Progress
+                                Sedang Dikerjakan
                             </p>
                         </div>
                         <div className="text-center">
@@ -299,7 +299,7 @@ const Tasks = () => {
                                 4
                             </p>
                             <p className="text-sm text-muted-foreground">
-                                Review
+                                Tinjauan
                             </p>
                         </div>
                         <div className="text-center">
@@ -310,7 +310,7 @@ const Tasks = () => {
                                 24
                             </p>
                             <p className="text-sm text-muted-foreground">
-                                Completed
+                                Selesai
                             </p>
                         </div>
                     </div>

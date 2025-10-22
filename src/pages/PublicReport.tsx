@@ -32,119 +32,119 @@ const PublicIncidentReport = () => {
             <div className="space-y-2 text-center">
                 <h1 className="flex items-center justify-center gap-2 text-3xl font-bold text-foreground">
                     <AlertTriangle className="h-7 w-7 text-orange-600" />
-                    Public Incident Report
+                    Laporan Insiden Publik
                 </h1>
                 <p className="mx-auto max-w-2xl text-muted-foreground">
-                    Use this form to report issues, safety concerns, or
-                    logistical problems during the event. Your feedback helps
-                    the committee respond faster and ensure everything runs
-                    smoothly.
+                    Gunakan formulir ini untuk melaporkan masalah, kekhawatiran
+                    keamanan, atau kendala logistik selama acara. Masukan Anda
+                    membantu panitia merespons lebih cepat dan memastikan acara
+                    berjalan dengan lancar.
                 </p>
             </div>
 
             <Card className="mx-auto max-w-2xl">
                 <CardHeader>
-                    <CardTitle>Submit an Incident</CardTitle>
+                    <CardTitle>Kirim Laporan Insiden</CardTitle>
                     <CardDescription>
-                        Please fill out all relevant fields
+                        Harap isi semua kolom yang relevan
                     </CardDescription>
                 </CardHeader>
 
                 <CardContent className="space-y-4">
                     <div className="space-y-2">
-                        <Label htmlFor="reporter">Your Name (optional)</Label>
-                        <Input id="reporter" placeholder="Enter your name" />
+                        <Label htmlFor="reporter">Nama Anda (opsional)</Label>
+                        <Input id="reporter" placeholder="Masukkan nama Anda" />
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="contact">Contact Email or Phone</Label>
+                        <Label htmlFor="contact">
+                            Kontak (Email atau Nomor HP)
+                        </Label>
                         <Input
                             id="contact"
-                            placeholder="We’ll reach you if we need clarification"
+                            placeholder="Kami akan menghubungi jika diperlukan klarifikasi"
                         />
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="title">Incident Title</Label>
+                        <Label htmlFor="title">Judul Insiden</Label>
                         <Input
                             id="title"
-                            placeholder="Brief summary of the issue"
+                            placeholder="Ringkasan singkat dari masalah"
                         />
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="description">
-                            Detailed Description
-                        </Label>
+                        <Label htmlFor="description">Deskripsi Lengkap</Label>
                         <Textarea
                             id="description"
-                            placeholder="Describe what happened, where, and when..."
+                            placeholder="Jelaskan apa yang terjadi, di mana, dan kapan..."
                             rows={4}
                         />
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-2">
                         <div className="space-y-2">
-                            <Label htmlFor="priority">Severity Level</Label>
+                            <Label htmlFor="priority">Tingkat Keparahan</Label>
                             <Select>
                                 <SelectTrigger id="priority">
-                                    <SelectValue placeholder="Select severity" />
+                                    <SelectValue placeholder="Pilih tingkat keparahan" />
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectItem value="high">
-                                        High - Urgent
+                                        Tinggi - Mendesak
                                     </SelectItem>
                                     <SelectItem value="medium">
-                                        Medium - Important
+                                        Sedang - Penting
                                     </SelectItem>
                                     <SelectItem value="low">
-                                        Low - Minor
+                                        Rendah - Minor
                                     </SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
 
                         <div className="space-y-2">
-                            <Label htmlFor="location">Location</Label>
+                            <Label htmlFor="location">Lokasi Kejadian</Label>
                             <Input
                                 id="location"
-                                placeholder="Where did it happen?"
+                                placeholder="Di mana insiden terjadi?"
                             />
                         </div>
                     </div>
 
-                    {/* File upload */}
+                    {/* Unggah File */}
                     {/* <div className="space-y-2">
-            <Label htmlFor="attachment">
-              Attach Photo or Document (optional)
-            </Label>
-            <div className="flex flex-col sm:flex-row gap-4 items-center">
-              <input
-                type="file"
-                id="attachment"
-                className="hidden"
-                accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
-                onChange={handleFileChange}
-              />
-              <label htmlFor="attachment" className="cursor-pointer">
-                <Button type="button" className="gap-2">
-                  <Upload className="h-4 w-4" />
-                  {fileName ? "Change File" : "Choose File"}
-                </Button>
-              </label>
-              <p className="text-sm text-muted-foreground truncate max-w-[180px]">
-                {fileName || "No file selected"}
-              </p>
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Supported formats: JPG, PNG, PDF, DOC, DOCX (Max 10MB)
-            </p>
-          </div> */}
+                        <Label htmlFor="attachment">
+                            Lampirkan Foto atau Dokumen (opsional)
+                        </Label>
+                        <div className="flex flex-col sm:flex-row gap-4 items-center">
+                            <input
+                                type="file"
+                                id="attachment"
+                                className="hidden"
+                                accept=".jpg,.jpeg,.png,.pdf,.doc,.docx"
+                                onChange={handleFileChange}
+                            />
+                            <label htmlFor="attachment" className="cursor-pointer">
+                                <Button type="button" className="gap-2">
+                                    <Upload className="h-4 w-4" />
+                                    {fileName ? "Ganti File" : "Pilih File"}
+                                </Button>
+                            </label>
+                            <p className="text-sm text-muted-foreground truncate max-w-[180px]">
+                                {fileName || "Belum ada file yang dipilih"}
+                            </p>
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                            Format yang didukung: JPG, PNG, PDF, DOC, DOCX (Maks 10MB)
+                        </p>
+                    </div> */}
 
                     <div className="flex justify-end gap-4">
-                        <Button>Submit Report</Button>
+                        <Button>Kirim Laporan</Button>
                         <Button variant="outline" type="reset">
-                            Clear Form
+                            Hapus Formulir
                         </Button>
                     </div>
                 </CardContent>

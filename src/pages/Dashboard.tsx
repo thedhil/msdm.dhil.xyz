@@ -20,7 +20,7 @@ import {
 const Dashboard = () => {
     const stats = [
         {
-            label: "Task Completion",
+            label: "Penyelesaian Tugas",
             value: "78%",
             change: "+12%",
             icon: CheckCircle2,
@@ -28,7 +28,7 @@ const Dashboard = () => {
             bgColor: "bg-green-50",
         },
         {
-            label: "Active Committees",
+            label: "Panitia Aktif",
             value: "24",
             change: "+3",
             icon: Users,
@@ -36,7 +36,7 @@ const Dashboard = () => {
             bgColor: "bg-blue-50",
         },
         {
-            label: "Open Incidents",
+            label: "Insiden Terbuka",
             value: "5",
             change: "-2",
             icon: AlertCircle,
@@ -44,7 +44,7 @@ const Dashboard = () => {
             bgColor: "bg-orange-50",
         },
         {
-            label: "Documents Shared",
+            label: "Dokumen Dibagikan",
             value: "47",
             change: "+8",
             icon: FileText,
@@ -55,57 +55,57 @@ const Dashboard = () => {
 
     const recentActivities = [
         {
-            action: "Task completed",
-            details: "Sound system setup verified by Technical Team",
-            time: "5 minutes ago",
+            action: "Tugas diselesaikan",
+            details: "Pemeriksaan sistem suara disetujui oleh Tim Teknis",
+            time: "5 menit yang lalu",
             status: "success",
         },
         {
-            action: "Incident reported",
-            details: "Microphone malfunction in Hall A",
-            time: "12 minutes ago",
+            action: "Insiden dilaporkan",
+            details: "Kerusakan mikrofon di Aula A",
+            time: "12 menit yang lalu",
             status: "warning",
         },
         {
-            action: "Document uploaded",
-            details: "Emergency evacuation plan added to shared folder",
-            time: "1 hour ago",
+            action: "Dokumen diunggah",
+            details: "Rencana evakuasi darurat ditambahkan ke folder bersama",
+            time: "1 jam yang lalu",
             status: "info",
         },
         {
-            action: "Recruitment update",
-            details: "15 new applications received for coordination team",
-            time: "2 hours ago",
+            action: "Pembaruan rekrutmen",
+            details: "15 lamaran baru diterima untuk tim koordinasi",
+            time: "2 jam yang lalu",
             status: "success",
         },
         {
-            action: "Task assigned",
-            details: "Registration desk setup assigned to Logistics Team",
-            time: "3 hours ago",
+            action: "Tugas diberikan",
+            details: "Penyiapan meja registrasi ditugaskan ke Tim Logistik",
+            time: "3 jam yang lalu",
             status: "info",
         },
     ];
 
     const upcomingDeadlines = [
         {
-            task: "Finalize registration system testing",
-            due: "Today, 5:00 PM",
-            priority: "high",
+            task: "Selesaikan pengujian sistem registrasi",
+            due: "Hari ini, 17:00",
+            priority: "tinggi",
         },
         {
-            task: "Submit venue setup checklist",
-            due: "Tomorrow, 10:00 AM",
-            priority: "medium",
+            task: "Kirim daftar pengecekan penyiapan tempat",
+            due: "Besok, 10:00",
+            priority: "sedang",
         },
         {
-            task: "Complete volunteer briefing materials",
-            due: "Dec 20, 2025",
-            priority: "medium",
+            task: "Selesaikan materi pengarahan relawan",
+            due: "20 Des 2025",
+            priority: "sedang",
         },
         {
-            task: "Final budget report submission",
-            due: "Dec 22, 2025",
-            priority: "low",
+            task: "Kirim laporan akhir anggaran",
+            due: "22 Des 2025",
+            priority: "rendah",
         },
     ];
 
@@ -113,15 +113,15 @@ const Dashboard = () => {
         <div className="space-y-8">
             <div>
                 <h1 className="mb-2 text-3xl font-bold text-foreground">
-                    Dashboard Overview
+                    Ringkasan Dashboard
                 </h1>
                 <p className="text-muted-foreground">
-                    Real-time monitoring of PKKMB event progress and committee
-                    activities
+                    Pemantauan waktu nyata untuk progres acara PKKMB dan
+                    aktivitas panitia
                 </p>
             </div>
 
-            {/* Stats Grid */}
+            {/* Statistik */}
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {stats.map((stat) => {
                     const Icon = stat.icon;
@@ -157,22 +157,22 @@ const Dashboard = () => {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-2">
-                {/* Event Progress */}
+                {/* Progres Acara */}
                 <Card>
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                             <Target className="h-5 w-5 text-primary" />
-                            Event Progress
+                            Progres Acara
                         </CardTitle>
                         <CardDescription>
-                            Overall preparation status for PKKMB 2025
+                            Status keseluruhan persiapan PKKMB 2025
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-6">
                         <div>
                             <div className="mb-2 flex justify-between">
                                 <span className="text-sm font-medium">
-                                    Venue Setup
+                                    Penyiapan Tempat
                                 </span>
                                 <span className="text-sm text-muted-foreground">
                                     90%
@@ -183,7 +183,7 @@ const Dashboard = () => {
                         <div>
                             <div className="mb-2 flex justify-between">
                                 <span className="text-sm font-medium">
-                                    Registration System
+                                    Sistem Registrasi
                                 </span>
                                 <span className="text-sm text-muted-foreground">
                                     75%
@@ -194,7 +194,7 @@ const Dashboard = () => {
                         <div>
                             <div className="mb-2 flex justify-between">
                                 <span className="text-sm font-medium">
-                                    Committee Training
+                                    Pelatihan Panitia
                                 </span>
                                 <span className="text-sm text-muted-foreground">
                                     60%
@@ -205,7 +205,7 @@ const Dashboard = () => {
                         <div>
                             <div className="mb-2 flex justify-between">
                                 <span className="text-sm font-medium">
-                                    Content Preparation
+                                    Persiapan Konten
                                 </span>
                                 <span className="text-sm text-muted-foreground">
                                     85%
@@ -216,15 +216,15 @@ const Dashboard = () => {
                     </CardContent>
                 </Card>
 
-                {/* Upcoming Deadlines */}
+                {/* Tenggat Waktu */}
                 <Card>
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2">
                             <Clock className="h-5 w-5 text-primary" />
-                            Upcoming Deadlines
+                            Tenggat Waktu Mendatang
                         </CardTitle>
                         <CardDescription>
-                            Tasks requiring immediate attention
+                            Tugas yang memerlukan perhatian segera
                         </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -236,9 +236,9 @@ const Dashboard = () => {
                                 >
                                     <div
                                         className={`mt-1 h-2 w-2 flex-shrink-0 rounded-full ${
-                                            deadline.priority === "high"
+                                            deadline.priority === "tinggi"
                                                 ? "bg-destructive"
-                                                : deadline.priority === "medium"
+                                                : deadline.priority === "sedang"
                                                   ? "bg-accent"
                                                   : "bg-muted"
                                         }`}
@@ -253,9 +253,9 @@ const Dashboard = () => {
                                     </div>
                                     <Badge
                                         variant={
-                                            deadline.priority === "high"
+                                            deadline.priority === "tinggi"
                                                 ? "destructive"
-                                                : deadline.priority === "medium"
+                                                : deadline.priority === "sedang"
                                                   ? "default"
                                                   : "secondary"
                                         }
@@ -269,12 +269,12 @@ const Dashboard = () => {
                 </Card>
             </div>
 
-            {/* Recent Activities */}
+            {/* Aktivitas Terbaru */}
             <Card>
                 <CardHeader>
-                    <CardTitle>Recent Activities</CardTitle>
+                    <CardTitle>Aktivitas Terbaru</CardTitle>
                     <CardDescription>
-                        Latest updates from all committees
+                        Pembaruan terbaru dari seluruh panitia
                     </CardDescription>
                 </CardHeader>
                 <CardContent>

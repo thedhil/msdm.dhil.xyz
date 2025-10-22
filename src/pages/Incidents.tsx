@@ -18,13 +18,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import {
-    AlertTriangle,
-    Plus,
-    CheckCircle2,
-    Clock,
-    XCircle,
-} from "lucide-react";
+import { AlertTriangle, Plus, CheckCircle2, Clock } from "lucide-react";
 
 const Incidents = () => {
     const [showForm, setShowForm] = useState(false);
@@ -32,57 +26,59 @@ const Incidents = () => {
     const incidents = [
         {
             id: "INC-001",
-            title: "Microphone malfunction in Hall A",
+            title: "Kerusakan mikrofon di Aula A",
             description:
-                "Main microphone not working during opening speech rehearsal",
-            reportedBy: "Audio Team",
-            priority: "high",
-            status: "in-progress",
-            time: "12 minutes ago",
+                "Mikrofon utama tidak berfungsi saat gladi bersih pidato pembukaan",
+            reportedBy: "Tim Audio",
+            priority: "tinggi",
+            status: "proses",
+            time: "12 menit yang lalu",
         },
         {
             id: "INC-002",
-            title: "Registration desk computer issue",
-            description: "One registration computer won't connect to database",
-            reportedBy: "Registration Team",
-            priority: "medium",
-            status: "open",
-            time: "1 hour ago",
+            title: "Masalah komputer meja registrasi",
+            description:
+                "Satu komputer registrasi tidak dapat terhubung ke basis data",
+            reportedBy: "Tim Registrasi",
+            priority: "sedang",
+            status: "terbuka",
+            time: "1 jam yang lalu",
         },
         {
             id: "INC-003",
-            title: "Missing banners at entrance",
-            description: "Welcome banners not yet installed at main entrance",
-            reportedBy: "Decoration Team",
-            priority: "medium",
-            status: "resolved",
-            time: "3 hours ago",
+            title: "Spanduk di pintu masuk belum terpasang",
+            description:
+                "Spanduk selamat datang belum dipasang di pintu masuk utama",
+            reportedBy: "Tim Dekorasi",
+            priority: "sedang",
+            status: "selesai",
+            time: "3 jam yang lalu",
         },
         {
             id: "INC-004",
-            title: "Insufficient parking space signage",
-            description: "Need additional directional signs for parking area",
-            reportedBy: "Logistics Team",
-            priority: "low",
-            status: "open",
-            time: "5 hours ago",
+            title: "Kurangnya papan petunjuk area parkir",
+            description: "Perlu tambahan papan arah untuk area parkir",
+            reportedBy: "Tim Logistik",
+            priority: "rendah",
+            status: "terbuka",
+            time: "5 jam yang lalu",
         },
         {
             id: "INC-005",
-            title: "Air conditioning not working in Room B",
-            description: "Temperature control issue in breakout room",
-            reportedBy: "Facilities Team",
-            priority: "high",
-            status: "resolved",
-            time: "1 day ago",
+            title: "AC tidak berfungsi di Ruang B",
+            description: "Masalah kontrol suhu di ruang breakout",
+            reportedBy: "Tim Fasilitas",
+            priority: "tinggi",
+            status: "selesai",
+            time: "1 hari yang lalu",
         },
     ];
 
     const getStatusIcon = (status: string) => {
         switch (status) {
-            case "resolved":
+            case "selesai":
                 return <CheckCircle2 className="h-4 w-4" />;
-            case "in-progress":
+            case "proses":
                 return <Clock className="h-4 w-4" />;
             default:
                 return <AlertTriangle className="h-4 w-4" />;
@@ -91,9 +87,9 @@ const Incidents = () => {
 
     const getStatusColor = (status: string) => {
         switch (status) {
-            case "resolved":
+            case "selesai":
                 return "bg-green-100 text-green-700";
-            case "in-progress":
+            case "proses":
                 return "bg-blue-100 text-blue-700";
             default:
                 return "bg-orange-100 text-orange-700";
@@ -102,9 +98,9 @@ const Incidents = () => {
 
     const getPriorityColor = (priority: string) => {
         switch (priority) {
-            case "high":
+            case "tinggi":
                 return "destructive";
-            case "medium":
+            case "sedang":
                 return "default";
             default:
                 return "secondary";
@@ -116,10 +112,11 @@ const Incidents = () => {
             <div className="flex items-center justify-between">
                 <div>
                     <h1 className="mb-2 text-3xl font-bold text-foreground">
-                        Incident Reporting
+                        Pelaporan Insiden
                     </h1>
                     <p className="text-muted-foreground">
-                        Quick issue submission and real-time tracking dashboard
+                        Kirim laporan masalah dengan cepat dan pantau status
+                        secara waktu nyata
                     </p>
                 </div>
                 <Button
@@ -127,11 +124,11 @@ const Incidents = () => {
                     className="gap-2"
                 >
                     <Plus className="h-4 w-4" />
-                    Report Incident
+                    Laporkan Insiden
                 </Button>
             </div>
 
-            {/* Statistics */}
+            {/* Statistik */}
             <div className="grid gap-6 sm:grid-cols-3">
                 <Card>
                     <CardContent className="p-6">
@@ -144,7 +141,7 @@ const Incidents = () => {
                                     5
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                    Open Issues
+                                    Insiden Terbuka
                                 </p>
                             </div>
                         </div>
@@ -161,7 +158,7 @@ const Incidents = () => {
                                     2
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                    In Progress
+                                    Sedang Diproses
                                 </p>
                             </div>
                         </div>
@@ -178,7 +175,7 @@ const Incidents = () => {
                                     12
                                 </p>
                                 <p className="text-sm text-muted-foreground">
-                                    Resolved
+                                    Selesai
                                 </p>
                             </div>
                         </div>
@@ -186,81 +183,82 @@ const Incidents = () => {
                 </Card>
             </div>
 
-            {/* Report Form */}
+            {/* Form Laporan */}
             {showForm && (
                 <Card>
                     <CardHeader>
-                        <CardTitle>Report New Incident</CardTitle>
+                        <CardTitle>Laporkan Insiden Baru</CardTitle>
                         <CardDescription>
-                            Provide details about the issue for immediate
-                            response
+                            Isi detail masalah agar dapat segera ditindaklanjuti
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4">
                         <div className="space-y-2">
-                            <Label htmlFor="title">Incident Title</Label>
+                            <Label htmlFor="title">Judul Insiden</Label>
                             <Input
                                 id="title"
-                                placeholder="Brief description of the issue"
+                                placeholder="Deskripsi singkat masalah"
                             />
                         </div>
                         <div className="space-y-2">
                             <Label htmlFor="description">
-                                Detailed Description
+                                Deskripsi Lengkap
                             </Label>
                             <Textarea
                                 id="description"
-                                placeholder="Provide as much detail as possible..."
+                                placeholder="Jelaskan secara detail..."
                                 rows={4}
                             />
                         </div>
                         <div className="grid gap-4 sm:grid-cols-2">
                             <div className="space-y-2">
-                                <Label htmlFor="priority">Priority Level</Label>
+                                <Label htmlFor="priority">
+                                    Tingkat Prioritas
+                                </Label>
                                 <Select>
                                     <SelectTrigger id="priority">
-                                        <SelectValue placeholder="Select priority" />
+                                        <SelectValue placeholder="Pilih prioritas" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectItem value="high">
-                                            High - Urgent
+                                            Tinggi - Mendesak
                                         </SelectItem>
                                         <SelectItem value="medium">
-                                            Medium - Important
+                                            Sedang - Penting
                                         </SelectItem>
                                         <SelectItem value="low">
-                                            Low - Can Wait
+                                            Rendah - Dapat Ditunda
                                         </SelectItem>
                                     </SelectContent>
                                 </Select>
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="location">Location</Label>
+                                <Label htmlFor="location">Lokasi</Label>
                                 <Input
                                     id="location"
-                                    placeholder="Where is the issue?"
+                                    placeholder="Di mana insiden terjadi?"
                                 />
                             </div>
                         </div>
                         <div className="flex gap-4">
-                            <Button>Submit Report</Button>
+                            <Button>Kirim Laporan</Button>
                             <Button
                                 variant="outline"
                                 onClick={() => setShowForm(false)}
                             >
-                                Cancel
+                                Batal
                             </Button>
                         </div>
                     </CardContent>
                 </Card>
             )}
 
-            {/* Incident List */}
+            {/* Daftar Insiden */}
             <Card>
                 <CardHeader>
-                    <CardTitle>All Incidents</CardTitle>
+                    <CardTitle>Daftar Semua Insiden</CardTitle>
                     <CardDescription>
-                        Live tracking of reported issues
+                        Pemantauan langsung semua insiden yang dilaporkan
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -309,7 +307,8 @@ const Incidents = () => {
                                 </p>
                                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                                     <span>
-                                        Reported by {incident.reportedBy}
+                                        {" "}
+                                        Dilaporkan oleh {incident.reportedBy}
                                     </span>
                                     <span>{incident.time}</span>
                                 </div>

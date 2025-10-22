@@ -27,11 +27,11 @@ const RecruitmentApply = () => {
         <div className="space-y-8">
             <div>
                 <h1 className="mb-2 text-3xl font-bold text-foreground">
-                    Recruitment Portal
+                    Portal Rekrutmen
                 </h1>
                 <p className="text-muted-foreground">
-                    Application forms for internal committee members and
-                    external professionals
+                    Formulir pendaftaran untuk anggota panitia internal dan
+                    profesional eksternal
                 </p>
             </div>
 
@@ -43,79 +43,81 @@ const RecruitmentApply = () => {
                 <TabsList className="grid w-full max-w-md grid-cols-2">
                     <TabsTrigger value="internal" className="gap-2">
                         <GraduationCap className="h-4 w-4" />
-                        Internal Recruitment
+                        Rekrutmen Internal
                     </TabsTrigger>
                     <TabsTrigger value="external" className="gap-2">
                         <Building2 className="h-4 w-4" />
-                        External Professionals
+                        Profesional Eksternal
                     </TabsTrigger>
                 </TabsList>
 
-                {/* Internal Form */}
+                {/* Formulir Internal */}
                 <TabsContent value="internal" className="mt-6">
                     <Card>
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2">
                                 <UserPlus className="h-5 w-5 text-primary" />
-                                Apply for Committee Position
+                                Daftar Sebagai Panitia
                             </CardTitle>
                             <CardDescription>
-                                Join the PKKMB organizing team for 2025
+                                Bergabung dengan tim kepanitiaan PKKMB 2025
                             </CardDescription>
                         </CardHeader>
 
                         <CardContent className="space-y-4">
                             <div className="grid gap-4 sm:grid-cols-2">
                                 <div className="space-y-2">
-                                    <Label htmlFor="fullname">Full Name</Label>
+                                    <Label htmlFor="fullname">
+                                        Nama Lengkap
+                                    </Label>
                                     <Input
                                         id="fullname"
-                                        placeholder="Enter your full name"
+                                        placeholder="Masukkan nama lengkap Anda"
                                     />
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="nim">
-                                        Student ID (NIM)
+                                        NIM (Nomor Induk Mahasiswa)
                                     </Label>
                                     <Input
                                         id="nim"
-                                        placeholder="Your student ID"
+                                        placeholder="Masukkan NIM Anda"
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="email">Email Address</Label>
+                                <Label htmlFor="email">Alamat Email</Label>
                                 <Input
                                     id="email"
                                     type="email"
-                                    placeholder="your.email@unesa.ac.id"
+                                    placeholder="email@unesa.ac.id"
                                 />
                             </div>
 
                             <div className="space-y-2">
                                 <Label htmlFor="position">
-                                    Desired Position
+                                    Posisi yang Diinginkan
                                 </Label>
                                 <Select>
                                     <SelectTrigger id="position">
-                                        <SelectValue placeholder="Select position" />
+                                        <SelectValue placeholder="Pilih posisi" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectItem value="logistics">
-                                            Logistics Coordinator
+                                            Koordinator Logistik
                                         </SelectItem>
                                         <SelectItem value="technical">
-                                            Technical Support
+                                            Dukungan Teknis
                                         </SelectItem>
                                         <SelectItem value="registration">
-                                            Registration Team
+                                            Tim Registrasi
                                         </SelectItem>
                                         <SelectItem value="documentation">
-                                            Documentation Team
+                                            Tim Dokumentasi
                                         </SelectItem>
                                         <SelectItem value="security">
-                                            Security Team
+                                            Tim Keamanan
                                         </SelectItem>
                                     </SelectContent>
                                 </Select>
@@ -123,32 +125,31 @@ const RecruitmentApply = () => {
 
                             <div className="space-y-2">
                                 <Label htmlFor="experience">
-                                    Relevant Experience
+                                    Pengalaman Relevan
                                 </Label>
                                 <Textarea
                                     id="experience"
-                                    placeholder="Describe your experience with event organization or relevant skills..."
+                                    placeholder="Ceritakan pengalaman Anda dalam organisasi acara atau keterampilan yang relevan..."
                                     rows={4}
                                 />
                             </div>
 
-                            <Button className="w-full">
-                                Submit Application
-                            </Button>
+                            <Button className="w-full">Kirim Lamaran</Button>
                         </CardContent>
                     </Card>
                 </TabsContent>
 
-                {/* External Form */}
+                {/* Formulir Eksternal */}
                 <TabsContent value="external" className="mt-6">
                     <Card>
                         <CardHeader>
                             <CardTitle className="flex items-center gap-2">
                                 <Building2 className="h-5 w-5 text-primary" />
-                                Apply as External Professional
+                                Daftar Sebagai Profesional Eksternal
                             </CardTitle>
                             <CardDescription>
-                                Join as an experienced professional consultant
+                                Bergabung sebagai konsultan profesional
+                                berpengalaman
                             </CardDescription>
                         </CardHeader>
 
@@ -156,56 +157,56 @@ const RecruitmentApply = () => {
                             <div className="grid gap-4 sm:grid-cols-2">
                                 <div className="space-y-2">
                                     <Label htmlFor="ext-fullname">
-                                        Full Name
+                                        Nama Lengkap
                                     </Label>
                                     <Input
                                         id="ext-fullname"
-                                        placeholder="Enter your full name"
+                                        placeholder="Masukkan nama lengkap Anda"
                                     />
                                 </div>
                                 <div className="space-y-2">
                                     <Label htmlFor="ext-id">
-                                        Professional ID
+                                        ID Profesional
                                     </Label>
                                     <Input
                                         id="ext-id"
-                                        placeholder="Your professional ID"
+                                        placeholder="Masukkan ID profesional Anda"
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <Label htmlFor="ext-email">Email Address</Label>
+                                <Label htmlFor="ext-email">Alamat Email</Label>
                                 <Input
                                     id="ext-email"
                                     type="email"
-                                    placeholder="your.email@company.com"
+                                    placeholder="email@perusahaan.com"
                                 />
                             </div>
 
                             <div className="space-y-2">
                                 <Label htmlFor="ext-position">
-                                    Desired Position
+                                    Posisi yang Diinginkan
                                 </Label>
                                 <Select>
                                     <SelectTrigger id="ext-position">
-                                        <SelectValue placeholder="Select position" />
+                                        <SelectValue placeholder="Pilih posisi" />
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectItem value="coordinator">
-                                            Event Coordinator
+                                            Koordinator Acara
                                         </SelectItem>
                                         <SelectItem value="media">
-                                            Media Relations
+                                            Hubungan Media
                                         </SelectItem>
                                         <SelectItem value="it">
-                                            IT Infrastructure
+                                            Infrastruktur TI
                                         </SelectItem>
                                         <SelectItem value="finance">
-                                            Finance Specialist
+                                            Spesialis Keuangan
                                         </SelectItem>
                                         <SelectItem value="consultant">
-                                            Management Consultant
+                                            Konsultan Manajemen
                                         </SelectItem>
                                     </SelectContent>
                                 </Select>
@@ -213,18 +214,16 @@ const RecruitmentApply = () => {
 
                             <div className="space-y-2">
                                 <Label htmlFor="ext-experience">
-                                    Professional Experience
+                                    Pengalaman Profesional
                                 </Label>
                                 <Textarea
                                     id="ext-experience"
-                                    placeholder="Describe your professional experience and qualifications..."
+                                    placeholder="Jelaskan pengalaman dan kualifikasi profesional Anda..."
                                     rows={4}
                                 />
                             </div>
 
-                            <Button className="w-full">
-                                Submit Application
-                            </Button>
+                            <Button className="w-full">Kirim Lamaran</Button>
                         </CardContent>
                     </Card>
                 </TabsContent>
