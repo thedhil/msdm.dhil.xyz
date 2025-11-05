@@ -22,6 +22,7 @@ jobs:
 
             - run: |
                   npm i -g bun
+                  npm i
                   bun run build
 
             - name: Upload Pages Artifact
