@@ -1,0 +1,49 @@
+name: Deploy to GitHub Pages
+
+on:
+    push:
+        branches: "main"
+
+jobs:
+    build:
+        name: Build Code
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v5
+
+            - name: Setup Node
+              id: build
+              uses: actions/setup-node@v6
+              with:
+                  node-version: 24
+
+            - run: |
+                  npm i -g bun
+                  bun run build
+
+            - name: Upload Pages Artifact
+              id: deployment
+              uses: actions/upload-pages-artifact@v4
+              with:
+                  path: dist
+
+    deploy:
+        needs: build
+
+        permissions:
+            pages: write
+            id-token: write
+
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4
